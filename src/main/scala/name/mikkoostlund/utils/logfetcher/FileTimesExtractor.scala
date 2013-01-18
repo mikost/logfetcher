@@ -9,18 +9,17 @@ class FileTimesExtractor(extractTimeStamp: (String) => Option[Calendar]) {
 
 	def determineTimePeriod(in: InputStream): Option[TimePeriod] = {
 		val lines = Source.fromInputStream(in).getLines
-		val maybeFirstTimeStamp = findNextTimeStamp(lines)
-		if (maybeFirstTimeStamp.isEmpty)
-			None
-		else {
-			val firstTimeStamp = maybeFirstTimeStamp.get
-			val lastTimeStamp = findLastTimeStamp(firstTimeStamp, lines)
-			Some(TimePeriod(firstTimeStamp, lastTimeStamp))
+
+		nextTimeStamp(lines) map {
+		  timeStamp => 
+		    val firstTimeStamp = timeStamp
+		    val lastTimeStamp = lastTimeStampAfter(firstTimeStamp, lines)
+		    TimePeriod(firstTimeStamp, lastTimeStamp)
 		}
 	}
 
 	@tailrec
-	final def findNextTimeStamp(lines: Iterator[String]): Option[Calendar] = {
+	final def nextTimeStamp(lines: Iterator[String]): Option[Calendar] = {
 		if (!lines.hasNext)
 			None
 		else {
@@ -28,17 +27,17 @@ class FileTimesExtractor(extractTimeStamp: (String) => Option[Calendar]) {
 			if (timeStamp.isDefined)
 				timeStamp
 			else
-				findNextTimeStamp(lines)
+				nextTimeStamp(lines)
 		}
 	}
 
 	@tailrec
-	final def findLastTimeStamp(foundTimeStamp: Calendar, lines: Iterator[String]): Calendar = {
+	final def lastTimeStampAfter(foundTimeStamp: Calendar, lines: Iterator[String]): Calendar = {
 		require(foundTimeStamp != null)
 
-		findNextTimeStamp(lines) match {
+		nextTimeStamp(lines) match {
 			case Some(nextTimeStamp) => {
-				findLastTimeStamp(nextTimeStamp, lines)
+				lastTimeStampAfter(nextTimeStamp, lines)
 			}
 			case None => foundTimeStamp
 		}

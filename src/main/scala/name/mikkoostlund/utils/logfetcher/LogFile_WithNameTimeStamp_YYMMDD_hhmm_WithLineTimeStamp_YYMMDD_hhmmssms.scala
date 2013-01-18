@@ -9,15 +9,6 @@ import java.io.FileInputStream
 import java.io.Closeable
 import java.io.BufferedInputStream
 
-object Main {
-  def main(args: Array[String]) {
-    val lfp = (new LogFile_WithNameTimeStamp_YYMMDD_hhmm_WithLineTimeStamp_YYMMDD_hhmmssms(new File("/wa/mik/calsys/calsys_"))).parts().apply(0)
-    val lines = Source.fromInputStream(lfp.createInputStream()).getLines()
-    println(lines.next());
-    println(lines.next());
-  }
-}
-
 class LogFile_WithNameTimeStamp_YYMMDD_hhmm_WithLineTimeStamp_YYMMDD_hhmmssms(baseFile: File) extends FileLogFile(baseFile) {
 
 	private val YY = "([0-9]{2})"
@@ -43,7 +34,7 @@ class LogFile_WithNameTimeStamp_YYMMDD_hhmm_WithLineTimeStamp_YYMMDD_hhmmssms(ba
 
 		    case head :: tail => {
 		    	val laterFile = head
-		    	val startTime = extractor.findNextTimeStamp(Source.fromInputStream(toInputStream(file)).getLines).get
+		    	val startTime = extractor.nextTimeStamp(Source.fromInputStream(toInputStream(file)).getLines).get
 		    	val endTime = laterFile.timePeriod.get.startTime
 		    	Some(new TimePeriod(startTime, endTime))
 		    }
