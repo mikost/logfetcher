@@ -135,8 +135,7 @@ class LogFileExcerptInputStream(val logFile: LogFile, excerptStrategy: ExcerptSt
 				currentLine = null
 			}
 		} while (currentLine == null);
-		val cbuffer = java.nio.CharBuffer wrap (currentLine + EOL)
-		buffer = Codec.UTF8 encode cbuffer
+		buffer = java.nio.ByteBuffer wrap { Codec.toUTF8(currentLine + EOL) }
 	}
 
 	private[this]
