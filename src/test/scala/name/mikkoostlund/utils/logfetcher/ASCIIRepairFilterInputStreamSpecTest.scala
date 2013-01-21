@@ -34,7 +34,7 @@ class ASCIIRepairFilterInputStreamSpecTest extends Specification {
       success
     }
 
-    "replace non-ASCII chars with dollar-signs" in new TestData {
+    "replace non-ASCII chars with dollar-signs 2" in new TestData {
       val repairedStream = new ASCIIRepairFilterInputStream(brokenInputStream, repairValue)
       val repairedASCIIBytes = Array.ofDim[Byte](4)
       repairedStream.read(repairedASCIIBytes, 0, 4) mustEqual 4
