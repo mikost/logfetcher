@@ -9,7 +9,7 @@ import org.specs2.mutable.Specification
 import org.specs2.specification.Scope
 
 @RunWith(classOf[JUnitRunner])
-class Spec2Test extends Specification {
+class ASCIIRepairFilterInputStreamSpecTest extends Specification {
 
   trait TestData extends Scope {
     val brokenASCIIBytes = {
