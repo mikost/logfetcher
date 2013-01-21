@@ -9,7 +9,7 @@ import org.junit.runner.RunWith
 import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
 
-@RunWith(classOf[org.specs2.runner.JUnitRunner])
+@RunWith(classOf[JUnitRunner])
 class FileTimesExtractorSpecTest extends Specification { def is =
   "A FileTimesExtractor must" ^
     "correctly determine the TimePeriod corresponding" +
