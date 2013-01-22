@@ -14,7 +14,7 @@ class LogFile_WithNameTimeStamp_YYMMDD_hhmm_WithLineTimeStamp_YYMMDD_hhmmssms(ba
 	private val YY = "([0-9]{2})"
 	private val MM = "(0[1-9]|1[0-2])"
 	private val DD = "(0[1-9]|[12][0-9]|3[01])"
-	private val hh = "(0[1-9]|[12][0-9]|3[01])"
+	private val hh = "(0[0-9]|1[0-9]|2[0-3])"
 	private val mm, ss = "([0-5][0-9])"
 	private val ms = "([0-9]{3})"
 	private val ext = "log" 
