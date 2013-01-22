@@ -4,7 +4,7 @@ import org.specs2.Specification
 import org.specs2.execute.Result
 import java.util.Calendar
 import java.util.GregorianCalendar
-import java.io.ByteArrayInputStream
+import java.io.ByteArrayInputStream 
 import org.junit.runner.RunWith
 import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
@@ -47,20 +47,12 @@ class FileTimesExtractorSpecTest extends Specification { def is =
     }
 
     object TestLogFile1 {
-      lazy val inputStream = new ByteArrayInputStream(logLines.getBytes)
+      lazy val inputStream = logLines.openStream()
       lazy val expectedStartTime = getTime(2013, 1, 21, 14, 39, 1, 123)
       lazy val expectedEndTime   = getTime(2013, 1, 21, 14, 40, 2, 456)
 
-      private[this] val logLines = 
-                     """At the beginning of the file there are some lines
-                       | that don't have proper time stamps.
-                       |130121 14:39:01.123 This line has the FIRST good time stamp
-                       |130121 #¤%¤%  This line has a garbled timestamp
-                       |130121 14:39:02.123 This line has a good time stamp
-                       |130121 14:40:02.456 This line has the LAST a good time stamp
-                       | Some lines without proper timestamps
-                       | appear at the end of the file.""".stripMargin
-
+      private[this] val logLines = this.getClass().getResource("test_log_file.txt")
+      
       private[this] def getTime(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int, millis: Int) = {
         val expectedStartTimeCal = new GregorianCalendar(year, month-1, day, hour, minute, second)
         expectedStartTimeCal.set(Calendar.MILLISECOND, millis)

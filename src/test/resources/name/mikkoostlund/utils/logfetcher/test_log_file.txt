@@ -1,0 +1,8 @@
+At the beginning of the file there are some lines
+ that don't have proper time stamps.
+130121 14:39:01.123 This line has the FIRST good time stamp
+130121 #¤%¤%  This line has a garbled timestamp
+130121 14:39:02.123 This line has a good time stamp
+130121 14:40:02.456 This line has the LAST a good time stamp
+ Some lines without proper timestamps
+ appear at the end of the file.
