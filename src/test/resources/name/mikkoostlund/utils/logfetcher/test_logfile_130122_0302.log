@@ -1,0 +1,13 @@
+130122 03:02:00.123 This is log line 1.
+These are log lines 2 and 3. They have no time stamps, 
+and should NOT be included, unless line 1 is.
+130122 03:02:03.012 This is log line 4.
+130122 03:02:04.345 This is log line 5.
+130122 03:02:05.678 This is log line 6.
+130122 03:02:06.901 This is log line 7.
+130122 03:02:07.234 This is log line 8.
+130122 03:02:08.567 This is log line 9.
+130122 03:02:09.890 This is log line 10.
+These are log lines 11 and 12. They have no time 
+stamps, but should be included if line 10 is.
+130122 03:02:12.789 This is log line 13.

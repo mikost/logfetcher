@@ -1,0 +1,13 @@
+130123 23:45:00.123 This is log line 1.
+These are log lines 2 and 3. They have no time 
+stamps, but should be included if line 1 is.
+130123 23:45:03.012 This is log line 4.
+130123 23:45:04.345 This is log line 5.
+130123 23:45:05.678 This is log line 6.
+130123 23:45:06.901 This is log line 7.
+130123 23:45:07.234 This is log line 8.
+130123 23:45:08.567 This is log line 9.
+130123 23:45:09.890 This is log line 10.
+130123 23:45:10.123 This is log line 11.
+130123 23:45:11.456 This is log line 12.
+130123 23:45:12.789 This is log line 13.

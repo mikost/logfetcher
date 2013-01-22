@@ -1,8 +1,12 @@
 *~
 *.class
 *.log
+!/src/test/resources/name/mikkoostlund/utils/logfetcher/*.log
 
 *.cache
+
+# Eclipse build output
+bin/
 
 # sbt specific
 dist/*
