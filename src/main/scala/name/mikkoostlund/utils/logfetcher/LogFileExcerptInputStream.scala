@@ -389,6 +389,7 @@ class TimePeriodExcerptStrategy(timePeriod: TimePeriod) extends ExcerptStrategy 
 		  	}
 
 		  	case EXCERPT_FINISHED => false
+		  	case EXCERPT_STREAM_CLOSED => throw new IllegalStateException("called when inputStream.state == EXCERPT_STREAM_CLOSED")
 		}
 	}
 

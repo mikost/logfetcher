@@ -18,9 +18,9 @@ class LogFetcherSpecTest extends Specification { def is =
 
 	  def testFetchLogs = {
 	    import TimePeriod._
-	    val startTime = new GregorianCalendar(2013, 0, 22, 03, 02, 06)
+	    val startTime = new GregorianCalendar(2013, 0, 22, 3, 2, 6)
 	    startTime.set(Calendar.MILLISECOND, 500)
-	    val endTime = new GregorianCalendar(2013, 0, 23, 23, 45, 04)
+	    val endTime = new GregorianCalendar(2013, 0, 23, 23, 45, 4)
 	    endTime.set(Calendar.MILLISECOND, 500)
 	    val logFetcher = new LogFetcher
 	    val oneLogFile = new File(this.getClass.getResource("test_logfile_130122_0302.log").getPath)

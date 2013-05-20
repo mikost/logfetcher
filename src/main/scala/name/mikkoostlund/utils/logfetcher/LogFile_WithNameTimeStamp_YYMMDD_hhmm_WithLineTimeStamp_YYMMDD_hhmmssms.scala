@@ -59,7 +59,7 @@ class LogFile_WithNameTimeStamp_YYMMDD_hhmm_WithLineTimeStamp_YYMMDD_hhmmssms(ba
 			new ASCIIRepairFilterInputStream(bis, '$')
 		}
 		catch {
-		  	case throwable => resource.close; throw throwable
+		  	case throwable: Throwable => resource.close; throw throwable
 		}
 	}
 	
